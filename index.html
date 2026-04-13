@@ -7,15 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* أحمر نقي ومركز */
-            --neon-red: #ff0000; 
+            /* أحمر نيون متوازن وواضح */
+            --neon-red: #ff3333; 
             --main-bg: #000000;
         }
 
         body {
             background-color: var(--main-bg);
             color: white;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
             overflow: hidden; 
             display: flex;
@@ -24,31 +24,29 @@
             min-height: 100vh;
         }
 
-        /* شاشة الترحيب السينمائية */
+        /* شاشة الترحيب */
         .intro-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: black;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            animation: fadeOutOverlay 1s forwards 5s;
+            animation: fadeOutOverlay 0.8s forwards 5s;
         }
 
         .intro-text {
             position: absolute;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--neon-red);
-            /* توهج أحمر مضاعف لزيادة القوة */
-            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red), 0 0 40px var(--neon-red);
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffffff; /* جعلنا النص أبيض ليكون واضحاً جداً */
+            /* توهج أحمر خفيف حول النص الأبيض ليعطي تأثير النيون دون تشويش */
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red);
             opacity: 0;
             text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
@@ -56,10 +54,10 @@
         .msg-2 { animation: dustEffect 2.5s forwards 2.5s; }
 
         @keyframes dustEffect {
-            0% { opacity: 0; transform: scale(0.8); filter: blur(12px); }
-            20% { opacity: 1; filter: blur(0); transform: scale(1); }
-            80% { opacity: 1; filter: blur(0); transform: scale(1); }
-            100% { opacity: 0; transform: scale(1.2); filter: blur(20px); }
+            0% { opacity: 0; transform: scale(0.9); filter: blur(8px); }
+            30% { opacity: 1; filter: blur(0); transform: scale(1); }
+            70% { opacity: 1; filter: blur(0); transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.1); filter: blur(15px); }
         }
 
         @keyframes fadeOutOverlay {
@@ -69,87 +67,96 @@
         /* محتوى الموقع */
         .main-content {
             opacity: 0;
-            animation: fadeInSite 1.5s forwards 5.5s;
+            animation: fadeInSite 1.2s forwards 5.5s;
             width: 90%;
-            max-width: 380px;
+            max-width: 360px;
             text-align: center;
         }
 
         @keyframes fadeInSite {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .main-card {
-            background: #050000; 
+            background: #080808; 
             padding: 40px 20px;
-            border: 1px solid #330000;
-            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
+            border: 1px solid #222; /* حدود رمادية هادئة وواضحة */
+            border-radius: 5px;
         }
 
         .logo-img {
-            width: 110px;
-            height: 110px;
+            width: 105px;
+            height: 105px;
             border: 2px solid var(--neon-red);
-            /* توهج الشعار أصبح أقوى */
-            box-shadow: 0 0 10px var(--neon-red), 0 0 20px rgba(255, 0, 0, 0.5);
-            object-fit: cover;
-            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+            margin-bottom: 20px;
         }
 
-        h1 { font-size: 1.4rem; letter-spacing: 1px; color: #fff; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
-        p.tagline { color: var(--neon-red); font-size: 0.85rem; letter-spacing: 2px; font-weight: bold; }
+        h1 { 
+            font-size: 1.3rem; 
+            color: #ffffff; 
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
 
-        .links { display: flex; flex-direction: column; gap: 14px; }
+        .tagline { 
+            color: var(--neon-red); 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .links { display: flex; flex-direction: column; gap: 12px; }
 
         .btn {
             background: #000;
-            border: 1px solid #330000;
+            border: 1px solid #333;
             padding: 16px;
-            color: #fff;
+            color: #ffffff; /* نص أبيض صريح للوضوح */
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
             transition: 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .btn i {
-            font-size: 1.2rem;
-            animation: pulseGlowRed 2s infinite ease-in-out;
+            color: var(--neon-red); /* الأيقونات هي التي تنبض بالأحمر */
+            animation: subtlePulse 2s infinite ease-in-out;
         }
 
         .btn:hover { 
             border-color: var(--neon-red); 
-            box-shadow: 0 0 20px var(--neon-red);
             color: var(--neon-red);
-            background: rgba(255, 0, 0, 0.05);
+            background: rgba(255, 51, 51, 0.05);
         }
 
-        @keyframes pulseGlowRed {
-            0% { color: #fff; text-shadow: 0 0 5px var(--neon-red); }
-            50% { color: var(--neon-red); text-shadow: 0 0 15px var(--neon-red); }
-            100% { color: #fff; text-shadow: 0 0 5px var(--neon-red); }
+        @keyframes subtlePulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.6; transform: scale(1); }
         }
 
         .map-btn {
-            margin-top: 35px;
-            border: 2px solid var(--neon-red);
-            padding: 18px;
-            color: white;
+            margin-top: 30px;
+            background: transparent;
+            border: 1px solid var(--neon-red);
+            padding: 15px;
+            color: #ffffff;
             text-decoration: none;
             display: block;
             font-weight: bold;
-            text-shadow: 0 0 10px var(--neon-red);
             transition: 0.3s;
         }
 
         .map-btn:hover {
             background: var(--neon-red);
             color: #000;
-            box-shadow: 0 0 30px var(--neon-red);
         }
     </style>
 </head>
@@ -190,10 +197,7 @@
     </div>
 
     <script>
-        setTimeout(() => {
-            document.body.style.overflow = "auto";
-        }, 6000);
+        setTimeout(() => { document.body.style.overflow = "auto"; }, 6000);
     </script>
-
 </body>
 </html>
