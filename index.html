@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* لون أحمر نيون فاتح ومضيء */
-            --neon-red: #ff4d4d; 
+            /* أحمر نقي ومركز */
+            --neon-red: #ff0000; 
             --main-bg: #000000;
         }
 
@@ -44,7 +44,8 @@
             font-size: 2.2rem;
             font-weight: 900;
             color: var(--neon-red);
-            text-shadow: 0 0 15px var(--neon-red), 0 0 30px rgba(255, 77, 77, 0.5);
+            /* توهج أحمر مضاعف لزيادة القوة */
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red), 0 0 40px var(--neon-red);
             opacity: 0;
             text-align: center;
             letter-spacing: 2px;
@@ -80,31 +81,32 @@
         }
 
         .main-card {
-            background: #0a0a0a; 
+            background: #050000; 
             padding: 40px 20px;
-            border: 1px solid #1a1a1a;
-            box-shadow: 0 0 40px rgba(255, 77, 77, 0.15);
+            border: 1px solid #330000;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.2);
         }
 
         .logo-img {
             width: 110px;
             height: 110px;
             border: 2px solid var(--neon-red);
-            box-shadow: 0 0 12px var(--neon-red);
+            /* توهج الشعار أصبح أقوى */
+            box-shadow: 0 0 10px var(--neon-red), 0 0 20px rgba(255, 0, 0, 0.5);
             object-fit: cover;
             margin-bottom: 25px;
         }
 
-        h1 { font-size: 1.4rem; letter-spacing: 1px; color: #fff; text-shadow: 0 0 5px rgba(255,255,255,0.1); }
-        p.tagline { color: var(--neon-red); font-size: 0.85rem; letter-spacing: 2px; text-shadow: 0 0 5px rgba(255, 77, 77, 0.3); }
+        h1 { font-size: 1.4rem; letter-spacing: 1px; color: #fff; text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); }
+        p.tagline { color: var(--neon-red); font-size: 0.85rem; letter-spacing: 2px; font-weight: bold; }
 
         .links { display: flex; flex-direction: column; gap: 14px; }
 
         .btn {
             background: #000;
-            border: 1px solid #252525;
+            border: 1px solid #330000;
             padding: 16px;
-            color: #efefef;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             display: flex;
@@ -112,65 +114,42 @@
             justify-content: center;
             gap: 15px;
             transition: 0.3s ease;
-            position: relative;
         }
 
-        /* تنسيق الأيقونة وإضافة أنيميشن النبض */
         .btn i {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8); /* لون أبيض خفيف كخلفية */
-            /* تطبيق أنيميشن النبض على الأيقونة */
-            animation: pulseGlow 2s infinite ease-in-out;
+            animation: pulseGlowRed 2s infinite ease-in-out;
         }
 
         .btn:hover { 
             border-color: var(--neon-red); 
-            box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
+            box-shadow: 0 0 20px var(--neon-red);
             color: var(--neon-red);
+            background: rgba(255, 0, 0, 0.05);
         }
 
-        /* عند تمرير الماوس، تصبح الأيقونة حمراء ثابتة */
-        .btn:hover i {
-            animation: none; /* إيقاف النبض */
-            color: var(--neon-red);
-            text-shadow: 0 0 10px var(--neon-red);
-        }
-
-        /* أنيميشن النبض للتوهج البسيط */
-        @keyframes pulseGlow {
-            0% {
-                color: rgba(255, 255, 255, 0.6);
-                text-shadow: 0 0 5px rgba(255, 77, 77, 0.2);
-            }
-            50% {
-                color: rgba(255, 77, 77, 0.9);
-                text-shadow: 0 0 15px rgba(255, 77, 77, 0.6);
-            }
-            100% {
-                color: rgba(255, 255, 255, 0.6);
-                text-shadow: 0 0 5px rgba(255, 77, 77, 0.2);
-            }
+        @keyframes pulseGlowRed {
+            0% { color: #fff; text-shadow: 0 0 5px var(--neon-red); }
+            50% { color: var(--neon-red); text-shadow: 0 0 15px var(--neon-red); }
+            100% { color: #fff; text-shadow: 0 0 5px var(--neon-red); }
         }
 
         .map-btn {
             margin-top: 35px;
-            border: 1px solid var(--neon-red);
+            border: 2px solid var(--neon-red);
             padding: 18px;
             color: white;
             text-decoration: none;
             display: block;
             font-weight: bold;
+            text-shadow: 0 0 10px var(--neon-red);
             transition: 0.3s;
         }
 
         .map-btn:hover {
-            background: rgba(255, 77, 77, 0.1);
-            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
-        }
-        
-        /* تأثير نبض خفيف لأيقونة الخريطة أيضاً */
-        .map-btn i {
-            animation: pulseGlow 2.5s infinite ease-in-out;
+            background: var(--neon-red);
+            color: #000;
+            box-shadow: 0 0 30px var(--neon-red);
         }
     </style>
 </head>
@@ -204,7 +183,7 @@
                 </a>
             </div>
 
-            <a href="http://googleusercontent.com/maps.google.com/Mila" class="map-btn" target="_blank">
+            <a href="https://maps.google.com/?q=Mila" class="map-btn" target="_blank">
                 <i class="fas fa-location-arrow"></i> FIND US IN MILA
             </a>
         </div>
