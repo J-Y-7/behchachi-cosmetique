@@ -2,26 +2,26 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Behchachi Cosmetique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body {
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            background-color: #000;
             color: #fff;
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        /* --- شاشة الترحيب الذكية بتوقيت منفصل --- */
+        /* --- شاشة الترحيب السينمائية --- */
         .intro-overlay {
             position: fixed;
             inset: 0;
@@ -30,27 +30,28 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            /* تختفي الشاشة السوداء بعد 6.5 ثانية */
-            animation: slideUp 1s cubic-bezier(0.9, 0, 0.1, 1) forwards 6.5s;
+            animation: slideUp 0.8s cubic-bezier(0.9, 0, 0.1, 1) forwards 6.5s;
+        }
+
+        .welcome-msg, .brand-name-intro {
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+            opacity: 0;
         }
 
         .welcome-msg {
-            position: absolute;
-            font-size: 1.5rem;
-            letter-spacing: 10px;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            letter-spacing: 8px;
             color: #d4af37;
-            opacity: 0;
-            /* تظهر في البداية وتبقى لـ 3 ثواني */
             animation: fadeInOutIntro 3s forwards;
         }
 
-        .brand-name {
-            position: absolute;
-            font-size: 2.2rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            opacity: 0;
-            /* تظهر بعد 3 ثواني وتبقى لـ 3 ثواني أخرى */
+        .brand-name-intro {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: 800;
+            color: #fff;
             animation: fadeInOutIntro 3s forwards 3s;
         }
 
@@ -58,130 +59,123 @@
             0% { opacity: 0; filter: blur(10px); transform: scale(0.9); }
             20% { opacity: 1; filter: blur(0); transform: scale(1); }
             80% { opacity: 1; filter: blur(0); transform: scale(1); }
-            100% { opacity: 0; filter: blur(10px); transform: scale(1.1); }
+            100% { opacity: 0; filter: blur(10px); transform: scale(1.05); }
         }
 
-        @keyframes slideUp {
-            to { transform: translateY(-100%); visibility: hidden; }
-        }
+        @keyframes slideUp { to { transform: translateY(-110%); visibility: hidden; } }
 
-        /* --- الكارت الزجاجي الفخم --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 30px;
-            padding: 50px 30px;
-            width: 90%;
-            max-width: 400px;
+        /* --- المحتوى الرئيسي --- */
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
             opacity: 0;
-            animation: fadeInCard 1s forwards 7s;
+            animation: fadeInContent 1s forwards 7s;
         }
 
-        @keyframes fadeInCard {
-            to { opacity: 1; }
-        }
+        @keyframes fadeInContent { to { opacity: 1; } }
 
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             border: 2px solid #d4af37;
-            margin-bottom: 20px;
-            padding: 5px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        h1 { font-size: 1.4rem; font-weight: 600; color: #fff; margin-bottom: 30px; letter-spacing: 1px; }
+        h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 35px; }
 
-        /* --- الأزرار المتسلسلة --- */
-        .links-container { display: flex; flex-direction: column; gap: 15px; }
+        /* --- الأزرار النابضة --- */
+        .links-list { display: flex; flex-direction: column; gap: 20px; }
 
-        .link-item {
-            background: rgba(255, 255, 255, 0.06);
+        .link-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
             padding: 18px 25px;
-            border-radius: 15px;
+            border-radius: 16px;
             text-decoration: none;
-            color: #ffffff;
+            color: #fff;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            transition: 0.4s;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.3s;
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.6s forwards;
+            animation: fadeInUp 0.6s forwards, pulseGlow 2.5s infinite ease-in-out;
         }
 
-        /* توقيت ظهور الأزرار بعد انتهاء الانترو */
-        .link-item:nth-child(1) { animation-delay: 7.2s; }
-        .link-item:nth-child(2) { animation-delay: 7.4s; }
-        .link-item:nth-child(3) { animation-delay: 7.6s; }
-        .link-item:nth-child(4) { animation-delay: 7.8s; }
+        /* توقيت الظهور وألوان النبض لكل زر */
+        .link-card:nth-child(1) { animation-delay: 7.2s; --glow: #25D366; }
+        .link-card:nth-child(2) { animation-delay: 7.4s; --glow: #1877F2; }
+        .link-card:nth-child(3) { animation-delay: 7.6s; --glow: #E4405F; }
+        .link-card:nth-child(4) { animation-delay: 7.8s; --glow: #ff0050; }
 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* تأثير النبض (Pulse) */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
+            50% { box-shadow: 0 0 15px var(--glow); border-color: var(--glow); }
+            100% { box-shadow: 0 0 5px rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
         }
 
-        .link-item:hover {
-            background: rgba(212, 175, 55, 0.2);
-            border-color: #d4af37;
+        .link-card:hover {
             transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        .link-item i { color: #d4af37; font-size: 1.3rem; }
+        .link-card i { font-size: 1.4rem; color: var(--glow); }
+        .link-card span { font-weight: 600; font-size: 1rem; }
 
-        .location-btn {
-            margin-top: 40px;
+        .map-link {
+            margin-top: 45px;
             display: inline-block;
-            color: #666;
+            color: #888;
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             opacity: 0;
             animation: fadeIn 1s forwards 8.2s;
         }
-
-        @keyframes fadeIn { to { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <div class="intro-overlay">
         <div class="welcome-msg">WELCOME TO</div>
-        <div class="brand-name">BEHCHACHI COSMETIQUE</div>
+        <div class="brand-name-intro">BEHCHACHI COSMETIQUE</div>
     </div>
 
-    <div class="glass-card">
+    <div class="container">
         <img src="logo.png" alt="Logo" class="profile-img">
         <h1>BEHCHACHI COSMETIQUE</h1>
         
-        <div class="links-container">
-            <a href="https://wa.me/213777060507" class="link-item">
+        <div class="links-list">
+            <a href="https://wa.me/213777060507" class="link-card">
                 <i class="fab fa-whatsapp"></i>
                 <span>واتساب</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
-            <a href="https://www.facebook.com/cosmitique.behchachi" class="link-item">
+            <a href="https://www.facebook.com/cosmitique.behchachi" class="link-card">
                 <i class="fab fa-facebook-f"></i>
                 <span>فيسبوك</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
-            <a href="https://www.instagram.com/rafikrafik3503" class="link-item">
+            <a href="https://www.instagram.com/rafikrafik3503" class="link-card">
                 <i class="fab fa-instagram"></i>
                 <span>إنستغرام</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
-            <a href="https://www.tiktok.com/@cosmetique.behchachi" class="link-item">
+            <a href="https://www.tiktok.com/@cosmetique.behchachi" class="link-card">
                 <i class="fab fa-tiktok"></i>
                 <span>تيك توك</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem;"></i>
+                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
         </div>
 
-        <a href="https://maps.app.goo.gl/YourLocation" class="location-btn">
+        <a href="https://maps.google.com/?q=Mila,Algeria" class="map-link" target="_blank">
              MILA, ALGERIA <i class="fas fa-map-marker-alt"></i>
         </a>
     </div>
