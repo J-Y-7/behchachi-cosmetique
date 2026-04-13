@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Behchachi Cosmetique</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         
         body {
             background-color: #000;
             color: #fff;
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Poppins', sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -21,7 +21,7 @@
             overflow-x: hidden;
         }
 
-        /* --- شاشة الترحيب السينمائية --- */
+        /* --- Cinematic Intro Overlay --- */
         .intro-overlay {
             position: fixed;
             inset: 0;
@@ -64,7 +64,7 @@
 
         @keyframes slideUp { to { transform: translateY(-110%); visibility: hidden; } }
 
-        /* --- المحتوى الرئيسي --- */
+        /* --- Main Content Container --- */
         .container {
             width: 100%;
             max-width: 450px;
@@ -85,9 +85,9 @@
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
-        h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 35px; }
+        h1 { font-size: 1.5rem; font-weight: 800; margin-bottom: 35px; letter-spacing: 1px; }
 
-        /* --- الأزرار النابضة --- */
+        /* --- Pulsing Social Buttons --- */
         .links-list { display: flex; flex-direction: column; gap: 20px; }
 
         .link-card {
@@ -103,42 +103,60 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: 0.3s;
             opacity: 0;
+            transform: translateY(20px);
             animation: fadeInUp 0.6s forwards, pulseGlow 2.5s infinite ease-in-out;
         }
 
-        /* توقيت الظهور وألوان النبض لكل زر */
         .link-card:nth-child(1) { animation-delay: 7.2s; --glow: #25D366; }
         .link-card:nth-child(2) { animation-delay: 7.4s; --glow: #1877F2; }
         .link-card:nth-child(3) { animation-delay: 7.6s; --glow: #E4405F; }
-        .link-card:nth-child(4) { animation-delay: 7.8s; --glow: #ff0050; }
+        .link-card:nth-child(4) { animation-delay: 7.8s; --glow: #ffffff; }
 
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-        /* تأثير النبض (Pulse) */
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 5px rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
-            50% { box-shadow: 0 0 15px var(--glow); border-color: var(--glow); }
+            50% { box-shadow: 0 0 20px var(--glow); border-color: var(--glow); }
             100% { box-shadow: 0 0 5px rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
         }
 
-        .link-card:hover {
-            transform: scale(1.05);
-            background: rgba(255, 255, 255, 0.1);
-        }
+        .link-card:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.1); }
 
         .link-card i { font-size: 1.4rem; color: var(--glow); }
-        .link-card span { font-weight: 600; font-size: 1rem; }
+        .link-card span { font-weight: 600; font-size: 1rem; letter-spacing: 1px; }
 
-        .map-link {
-            margin-top: 45px;
-            display: inline-block;
-            color: #888;
+        /* --- Gold Map Button --- */
+        .map-btn {
+            margin-top: 40px;
+            background: linear-gradient(45deg, #d4af37, #f1c40f);
+            color: #000;
+            padding: 18px;
+            border-radius: 50px;
             text-decoration: none;
-            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 8.2s;
+            transition: 0.3s;
+        }
+
+        .map-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(212, 175, 55, 0.5); }
+
+        .footer-text {
+            margin-top: 30px;
+            color: #444;
+            font-size: 0.7rem;
             letter-spacing: 2px;
             opacity: 0;
-            animation: fadeIn 1s forwards 8.2s;
+            animation: fadeIn 1s forwards 8.5s;
         }
+
+        @keyframes fadeIn { to { opacity: 1; } }
     </style>
 </head>
 <body>
@@ -155,29 +173,31 @@
         <div class="links-list">
             <a href="https://wa.me/213777060507" class="link-card">
                 <i class="fab fa-whatsapp"></i>
-                <span>واتساب</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <span>WHATSAPP</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
             <a href="https://www.facebook.com/cosmitique.behchachi" class="link-card">
                 <i class="fab fa-facebook-f"></i>
-                <span>فيسبوك</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <span>FACEBOOK</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
             <a href="https://www.instagram.com/rafikrafik3503" class="link-card">
                 <i class="fab fa-instagram"></i>
-                <span>إنستغرام</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <span>INSTAGRAM</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
             <a href="https://www.tiktok.com/@cosmetique.behchachi" class="link-card">
                 <i class="fab fa-tiktok"></i>
-                <span>تيك توك</span>
-                <i class="fas fa-chevron-left" style="font-size: 0.7rem; opacity: 0.3;"></i>
+                <span>TIKTOK</span>
+                <i class="fas fa-chevron-right" style="font-size: 0.7rem; opacity: 0.3;"></i>
             </a>
         </div>
 
-        <a href="https://maps.google.com/?q=Mila,Algeria" class="map-link" target="_blank">
-             MILA, ALGERIA <i class="fas fa-map-marker-alt"></i>
+        <a href="https://maps.google.com/?cid=10485011193265698639&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" class="map-btn" target="_blank">
+            <i class="fas fa-map-marker-alt"></i> FIND US IN OULED RAHMOUNE
         </a>
+
+        <div class="footer-text">OULED RAHMOUNE, CONSTANTINE</div>
     </div>
 
 </body>
